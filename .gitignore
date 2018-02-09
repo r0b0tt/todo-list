@@ -1,0 +1,7 @@
+.vscode/
+db.sqlite3
+/ToDo_List/__pycache__/
+/todo/migrations/
+/todo/__pycache__/
+/todo/static/todo/.sass-cache/
+/todo/static/todo/css/style.css.map

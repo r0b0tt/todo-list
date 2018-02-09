@@ -1,0 +1,21 @@
+{% extends 'todo/base.html' %} {% block main %}
+
+<!-- Main Section -->
+<main>
+    <section id="todo">
+        <h3>Add New ToDo</h3>
+        <form action="" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" class="btn btn_success" value="Save">
+        </form>
+    </section>
+</main>
+<!-- Footer -->
+<footer>
+    <p>
+        Designed and Developed by <a href="">Antonio Maina</a>. &copy; 2017.
+    </p>
+</footer>
+
+{% endblock main %}

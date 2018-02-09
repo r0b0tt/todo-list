@@ -1,0 +1,25 @@
+{% extends "todo/base.html" %} {% block main %}
+
+<!-- Main Section -->
+<main>
+    <section id="jumbotron">
+        <p>
+            Do you occasionally forget what you're supposed to do everyday? Do you want to be reminded about the tasks you should do?
+            Then...
+        </p>
+        <a class="btn btn_success btn_large" href="{% url 'todo:register' %}">Join Us!</a>
+        <p>
+            Already have an account?
+        </p>
+        <a class="btn btn_success" href="{% url 'todo:login' %}">Log In</a>
+    </section>
+</main>
+</div>
+<!-- Footer -->
+<footer>
+    <p>
+        Designed and Developed by <a href="http://www.antoniomaina.com">Antonio Maina</a>. &copy; 2017.
+    </p>
+</footer>
+
+{% endblock main %}

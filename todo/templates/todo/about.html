@@ -1,0 +1,32 @@
+{% extends "todo/base.html" %}
+{% load static %}
+
+{% block main %}
+<!-- Main Section -->
+<main>
+    <section id="about">
+        <div class="branding">
+            <img src="{% static 'todo/img/logo.svg' %}" alt="">
+            <h3><a href="">ToDo List</a></h3>
+        </div>
+        <p>
+            <a href="{% url 'todo:index' %}">ToDo List</a> is a web application that helps you manage tasks you've set out to do during the week.
+        </p>
+        <p>
+            Designed and Developed by <a href="http://www.antoniomaina.com">Antonio Maina</a>. &copy; 2017.
+        </p>
+        <p class="social">
+            <a href=""><i class="fa fa-github"></i></a>
+            <a href=""><i class="fa fa-behance"></i></a>
+            <a href=""><i class="fa fa-dribbble"></i></a>
+            <a href=""><i class="fa fa-gitlab"></i></a>
+        </p>
+        <p class="social">
+            <a href=""><i class="fa fa-facebook"></i></a>
+            <a href=""><i class="fa fa-twitter"></i></a>
+            <a href=""><i class="fa fa-instagram"></i></a>
+            <a href=""><i class="fa fa-telegram"></i></a>
+        </p>
+    </section>
+</main>
+{% endblock main %}

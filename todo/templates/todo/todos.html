@@ -1,0 +1,261 @@
+{% extends "todo/base.html" %}
+
+<!-- Main Section -->
+{% block main %}
+<main>
+    <section id="todos">
+        <!-- Days Links -->
+        <div id="weekdays">
+            <h3>Days</h3>
+            <a href="javascript:void(0)" class="todolinks active_link" onclick="openTodo(event, 'All')">All</a>
+            <a href="javascript:void(0)" class="todolinks" onclick="openTodo(event, 'Today')">Today
+                            <span>{{ todays_date|date:'D d b' }}</span>
+                        </a>
+            <a href="javascript:void(0)" class="todolinks" onclick="openTodo(event, 'Tomorrow')">Tomorrow
+                            <span>{{ tomorrows_date|date:'D d b' }}</span>
+                        </a>
+            <a href="javascript:void(0)" class="todolinks" onclick="openTodo(event, 'day3')">{{ day3_date|date:'l' }}
+                            <span>{{ day3_date|date:'d b' }}</span>
+                        </a>
+            <a href="javascript:void(0)" class="todolinks" onclick="openTodo(event, 'day4')">{{ day4_date|date:'l' }}
+                                <span>{{ day4_date|date:'d b' }}</span>
+                            </a>
+            <a href="javascript:void(0)" class="todolinks" onclick="openTodo(event, 'day5')">{{ day5_date|date:'l' }}
+                                    <span>{{ day5_date|date:'d b' }}</span>
+                                </a>
+            <a href="javascript:void(0)" class="todolinks" onclick="openTodo(event, 'day6')">{{ day6_date|date:'l' }}
+                                        <span>{{ day6_date|date:'d b' }}</span>
+                                    </a>
+            <a href="javascript:void(0)" class="todolinks" onclick="openTodo(event, 'day7')">{{ day7_date|date:'l' }}
+                                            <span>{{ day7_date|date:'d b' }}</span>
+                                        </a>
+        </div>
+
+        <!-- ToDo Content -->
+        <div id="todo_content">
+            <div id="add_todo_section">
+                <a href="" class="add_todo"><i class="fa fa-plus"></i></a>
+            </div>
+            <div id="All" class="todo_content" style="display:block;">
+                {% if not todos %}
+                <p>Uh oh! You don't have any todos. <a href="{% url 'todo:add_todo' %}">Add one here</a>.</p>
+                {% endif %} {% for todo in todos %}
+
+                <div class="single_todo">
+                    <div class="todo_info">
+                        <p class="title">{{ todo.todo_title }}</p>
+                        <p class="priority">
+                            <i class="fa fa-circle"></i> {{ todo.priority }}
+                        </p>
+                        <p class="category">
+                            <i class="fa fa-circle"></i> {{ todo.category }}
+                        </p>
+                        <p class="due_date">
+                            <span>Due Date:</span> {{ todo.due_date|date:'l' }}
+                        </p>
+                    </div>
+                    <div class="todo_actions">
+                        <!-- Complete Todo -->
+                        <a href="{% url 'todo:delete_todo' todo.id %}" class="completed"><i class="fa fa-check"></i></a>
+                        <!-- Edit Todo -->
+                        <a href="{% url 'todo:edit_todo' todo.id %}" class="edit"><i class="fa fa-edit"></i></a>
+                        <!-- Delete Todo -->
+                        <a href="{% url 'todo:delete_todo' todo.id %}" class="delete_todo"><i class="fa fa-trash"></i></a>
+                    </div>
+                </div>
+
+                {% endfor %}
+            </div>
+            <div id="Today" class="todo_content">
+                {% if not todays_todos %}
+                <p>You don't have any Todos today. <a href="{% url 'todo:add_todo' %}">Add one here</a>.</p>
+                {% endif %} {% for todo in todays_todos %}
+
+                <div class="single_todo">
+                    <div class="todo_info">
+                        <p class="title">{{ todo.todo_title }}</p>
+                        <p class="priority">
+                            <i class="fa fa-circle"></i> {{ todo.priority }}
+                        </p>
+                        <p class="category">
+                            <i class="fa fa-circle"></i> {{ todo.category }}
+                        </p>
+                    </div>
+                    <div class="todo_actions">
+                        <!-- Complete Todo -->
+                        <a href="{% url 'todo:delete_todo' todo.id %}" class="completed"><i class="fa fa-check"></i></a>
+                        <!-- Edit Todo -->
+                        <a href="{% url 'todo:edit_todo' todo.id %}" class="edit"><i class="fa fa-edit"></i></a>
+                        <!-- Delete Todo -->
+                        <a href="{% url 'todo:delete_todo' todo.id %}" class="delete_todo"><i class="fa fa-trash"></i></a>
+                    </div>
+                </div>
+
+                {% endfor %}
+            </div>
+            <div id="Tomorrow" class="todo_content">
+                {% if not tomorrows_todos %}
+                <p>You don't have any Todos tomorrow. <a href="{% url 'todo:add_todo' %}">Add one here</a>.</p>
+                {% endif %} {% for todo in tomorrows_todos %}
+
+                <div class="single_todo">
+                    <div class="todo_info">
+                        <p class="title">{{ todo.todo_title }}</p>
+                        <p class="priority">
+                            <i class="fa fa-circle"></i> {{ todo.priority }}
+                        </p>
+                        <p class="category">
+                            <i class="fa fa-circle"></i> {{ todo.category }}
+                        </p>
+                    </div>
+                    <div class="todo_actions">
+                        <!-- Complete Todo -->
+                        <a href="{% url 'todo:delete_todo' todo.id %}" class="completed"><i class="fa fa-check"></i></a>
+                        <!-- Edit Todo -->
+                        <a href="{% url 'todo:edit_todo' todo.id %}" class="edit"><i class="fa fa-edit"></i></a>
+                        <!-- Delete Todo -->
+                        <a href="{% url 'todo:delete_todo' todo.id %}" class="delete_todo"><i class="fa fa-trash"></i></a>
+                    </div>
+                </div>
+
+                {% endfor %}
+            </div>
+            <div id="day3" class="todo_content">
+                {% if not day3_todos %}
+                <p>You don't have any Todos on {{ day3_date|date:'l' }}. <a href="{% url 'todo:add_todo' %}">Add one here</a>.</p>
+                {% endif %} {% for todo in day3_todos %}
+
+                <div class="single_todo">
+                    <div class="todo_info">
+                        <p class="title">{{ todo.todo_title }}</p>
+                        <p class="priority">
+                            <i class="fa fa-circle"></i> {{ todo.priority }}
+                        </p>
+                        <p class="category">
+                            <i class="fa fa-circle"></i> {{ todo.category }}
+                        </p>
+                    </div>
+                    <div class="todo_actions">
+                        <!-- Complete Todo -->
+                        <a href="{% url 'todo:delete_todo' todo.id %}" class="completed"><i class="fa fa-check"></i></a>
+                        <!-- Edit Todo -->
+                        <a href="{% url 'todo:edit_todo' todo.id %}" class="edit"><i class="fa fa-edit"></i></a>
+                        <!-- Delete Todo -->
+                        <a href="{% url 'todo:delete_todo' todo.id %}" class="delete_todo"><i class="fa fa-trash"></i></a>
+                    </div>
+                </div>
+
+                {% endfor %}
+            </div>
+            <div id="day4" class="todo_content">
+                {% if not day4_todos %}
+                <p>You don't have any Todos on {{ day4_date|date:'l' }}. <a href="{% url 'todo:add_todo' %}">Add one here</a>.</p>
+                {% endif %} {% for todo in day4_todos %}
+
+                <div class="single_todo">
+                    <div class="todo_info">
+                        <p class="title">{{ todo.todo_title }}</p>
+                        <p class="priority">
+                            <i class="fa fa-circle"></i> {{ todo.priority }}
+                        </p>
+                        <p class="category">
+                            <i class="fa fa-circle"></i> {{ todo.category }}
+                        </p>
+                    </div>
+                    <div class="todo_actions">
+                        <!-- Complete Todo -->
+                        <a href="{% url 'todo:delete_todo' todo.id %}" class="completed"><i class="fa fa-check"></i></a>
+                        <!-- Edit Todo -->
+                        <a href="{% url 'todo:edit_todo' todo.id %}" class="edit"><i class="fa fa-edit"></i></a>
+                        <!-- Delete Todo -->
+                        <a href="{% url 'todo:delete_todo' todo.id %}" class="delete_todo"><i class="fa fa-trash"></i></a>
+                    </div>
+                </div>
+
+                {% endfor %}
+            </div>
+            <div id="day5" class="todo_content">
+                    {% if not day5_todos %}
+                    <p>You don't have any Todos on {{ day5_date|date:'l' }}. <a href="{% url 'todo:add_todo' %}">Add one here</a>.</p>
+                    {% endif %} {% for todo in day5_todos %}
+    
+                    <div class="single_todo">
+                        <div class="todo_info">
+                            <p class="title">{{ todo.todo_title }}</p>
+                            <p class="priority">
+                                <i class="fa fa-circle"></i> {{ todo.priority }}
+                            </p>
+                            <p class="category">
+                                <i class="fa fa-circle"></i> {{ todo.category }}
+                            </p>
+                        </div>
+                        <div class="todo_actions">
+                            <!-- Complete Todo -->
+                            <a href="{% url 'todo:delete_todo' todo.id %}" class="completed"><i class="fa fa-check"></i></a>
+                            <!-- Edit Todo -->
+                            <a href="{% url 'todo:edit_todo' todo.id %}" class="edit"><i class="fa fa-edit"></i></a>
+                            <!-- Delete Todo -->
+                            <a href="{% url 'todo:delete_todo' todo.id %}" class="delete_todo"><i class="fa fa-trash"></i></a>
+                        </div>
+                    </div>
+    
+                    {% endfor %}
+                </div>
+            <div id="day6" class="todo_content">
+                {% if not day6_todos %}
+                <p>You don't have any Todos on {{ day6_date|date:'l' }}. <a href="{% url 'todo:add_todo' %}">Add one here</a>.</p>
+                {% endif %} {% for todo in day6_todos %}
+
+                <div class="single_todo">
+                    <div class="todo_info">
+                        <p class="title">{{ todo.todo_title }}</p>
+                        <p class="priority">
+                            <i class="fa fa-circle"></i> {{ todo.priority }}
+                        </p>
+                        <p class="category">
+                            <i class="fa fa-circle"></i> {{ todo.category }}
+                        </p>
+                    </div>
+                    <div class="todo_actions">
+                        <!-- Complete Todo -->
+                        <a href="{% url 'todo:delete_todo' todo.id %}" class="completed"><i class="fa fa-check"></i></a>
+                        <!-- Edit Todo -->
+                        <a href="{% url 'todo:edit_todo' todo.id %}" class="edit"><i class="fa fa-edit"></i></a>
+                        <!-- Delete Todo -->
+                        <a href="{% url 'todo:delete_todo' todo.id %}" class="delete_todo"><i class="fa fa-trash"></i></a>
+                    </div>
+                </div>
+
+                {% endfor %}
+            </div>
+            <div id="day7" class="todo_content">
+                    {% if not day7_todos %}
+                    <p>You don't have any Todos on {{ day7_date|date:'l' }}. <a href="{% url 'todo:add_todo' %}">Add one here</a>.</p>
+                    {% endif %} {% for todo in day7_todos %}
+    
+                    <div class="single_todo">
+                        <div class="todo_info">
+                            <p class="title">{{ todo.todo_title }}</p>
+                            <p class="priority">
+                                <i class="fa fa-circle"></i> {{ todo.priority }}
+                            </p>
+                            <p class="category">
+                                <i class="fa fa-circle"></i> {{ todo.category }}
+                            </p>
+                        </div>
+                        <div class="todo_actions">
+                            <!-- Complete Todo -->
+                            <a href="{% url 'todo:delete_todo' todo.id %}" class="completed"><i class="fa fa-check"></i></a>
+                            <!-- Edit Todo -->
+                            <a href="{% url 'todo:edit_todo' todo.id %}" class="edit"><i class="fa fa-edit"></i></a>
+                            <!-- Delete Todo -->
+                            <a href="{% url 'todo:delete_todo' todo.id %}" class="delete_todo"><i class="fa fa-trash"></i></a>
+                        </div>
+                    </div>
+    
+                    {% endfor %}
+                </div>
+        </div>
+    </section>
+</main>
+{% endblock main %}
