@@ -1,0 +1,636 @@
+// Colors.
+$green: #0DF97D;
+$dark_blue: #2880F3;
+$light_blue: #4ACADE;
+$light_red: #CF6565;
+$dark_red: #DD3E3E;
+// Fonts
+@font-face {
+    font-family: Asap-Medium;
+    src: url(../fonts/Asap-Medium.TTF);
+}
+
+@font-face {
+    font-family: Asap-Regular;
+    src: url(../fonts/Asap-Regular.TTF);
+}
+
+@font-face {
+    font-family: Raleway-Medium;
+    src: url(../fonts/Raleway-Medium.TTF);
+}
+
+$font_asap_regular: Asap-Regular;
+$font_asap_medium: Asap-Medium;
+$font_raleway_medium: Raleway-Medium;
+// Mixins
+@mixin transition() {
+    -webkit-transition: all 0.4s;
+    -moz-transition: all 0.4s;
+    -o-transition: all 0.4s;
+    transition: all 0.4s;
+}
+
+@mixin border-radius($radius) {
+    -webkit-border-radius: $radius;
+    -moz-border-radius: $radius;
+    -o-border-radius: $radius;
+    border-radius: $radius;
+}
+
+@mixin background_linear_gradient($color1, $color2) {
+    background: -webkit-linear-gradient(left, $color1, $color2);
+    background: -moz-linear-gradient(right, $color1, $color2);
+    background: -o-linear-gradient(right, $color1, $color2);
+    background: linear-gradient(to right, $color1, $color2);
+}
+
+@mixin animation($effect, $length) {
+    -webkit-animation: $effect $length;
+    -moz-animation: $effect $length;
+    -o-animation: $effect $length;
+    animation: $effect $length;
+}
+
+@mixin height() {
+    height: -webkit-calc(100vh - 60px);
+    height: -moz-calc(100vh - 60px);
+    height: -o-calc(100vh - 60px);
+    height: calc(100vh - 60px);
+}
+
+// Keyframes
+@keyframes fadeEffect {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+// Default Styles.
+* {
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+}
+
+.wrap {
+    width: 95%;
+    margin: 0 auto;
+}
+
+input,
+select {
+    padding: 10px 30px;
+    margin-bottom: 15px;
+    @include border-radius(50px);
+    border: none;
+    text-align: center;
+    font-size: 100%;
+}
+
+label {
+    display: block;
+    font-family: $font_asap_regular;
+}
+
+// Buttons
+.btn {
+    padding: 10px 15px !important;
+    color: #f4f4f4;
+    cursor: pointer;
+    font-family: $font_asap_medium;
+    font-size: 100% !important;
+    @include border-radius(10px !important);
+    @include transition();
+    &:hover {
+        background: #f4f4f4;
+        color: $dark_blue;
+    }
+}
+
+.btn_success {
+    border: 2px solid $green;
+    background: $green;
+}
+
+.btn_danger {
+    border: 2px solid $light_red;
+    background: $light_red;
+}
+
+.btn_large {
+    padding: 15px 25px !important;
+}
+
+// Body
+body {
+    margin: 0; // Sidenav
+    #sidenav {
+        background: #333333;
+        padding: 30px 0;
+        width: 0;
+        height: 100vh;
+        position: fixed;
+        font-family: Asap-Medium;
+        z-index: 1;
+        overflow-x: hidden;
+        @include transition;
+        a {
+            display: block;
+            color: #f4f4f4;
+            padding: 15px 20px;
+            @include transition();
+            &:hover {
+                background: #f4f4f4;
+                color: $dark_blue;
+            }
+        }
+        #close_button {
+            position: relative;
+            left: 65%;
+            font-size: 2em;
+            padding: 0;
+            color: red;
+            &:hover {
+                color: rgba(255, 255, 255, 0.5);
+                background: transparent;
+                cursor: pointer;
+            }
+        }
+        .active {
+            color: $light_blue;
+        }
+    }
+    #background {
+        background: $dark_blue;
+        @include background_linear_gradient($dark_blue, $light_blue);
+        height: 100vh; // Navigation Bar.
+        nav {
+            font-family: $font_raleway_medium;
+            padding: 10px;
+            height: 60px;
+            min-height: 60px;
+            height: 60px;
+            overflow: hidden;
+            a {
+                color: #f4f4f4;
+                @include transition();
+                &:hover {
+                    color: rgba(0, 0, 0, 0.5);
+                }
+            }
+            .active {
+                color: rgba(0, 0, 0, 0.5);
+            }
+            .brand {
+                img {
+                    width: 50px;
+                    float: left;
+                }
+                a {
+                    float: left;
+                    padding: 10px;
+                }
+                #brand_title {
+                    padding: 5px;
+                    font-size: 150%;
+                }
+            }
+            #right_nav {
+                float: right;
+                padding: 5px;
+                img {
+                    width: 50px;
+                    float: left;
+                    position: relative;
+                    bottom: 10px;
+                    @include border-radius(50%);
+                }
+                a {
+                    padding: 5px;
+                    float: left;
+                }
+                #open_nav_btn {
+                    display: none;
+                    cursor: pointer;
+                    font-size: 150%;
+                    padding: 0;
+                    margin: .5em;
+                    float: left;
+                }
+            }
+        } // Main Section
+        main {
+            // Jumbotron.
+            #jumbotron {
+                text-align: center;
+                font-family: $font_asap_medium;
+                color: #f4f4f4;
+                margin: 12% 0 0 0;
+                a {
+                    display: inline-block;
+                    margin: 5px 0;
+                }
+            } // Login and Registration
+            #auth {
+                text-align: center;
+                color: #f4f4f4;
+                font-family: $font_asap_regular;
+                h3 {
+                    font-family: $font_raleway_medium;
+                    font-size: 150%;
+                }
+                a {
+                    color: $green;
+                    @include transition();
+                    &:hover {
+                        color: rgba(0, 0, 0, 0.5);
+                    }
+                }
+                #login {
+                    margin-top: 10%;
+                }
+                #register {
+                    margin-top: 5%;
+                }
+            } // About Page
+            #about {
+                text-align: center;
+                margin-top: 5%;
+                font-family: $font_asap_medium;
+                color: #f4f4f4;
+                .branding {
+                    font-family: $font_raleway_medium;
+                    img {
+                        width: 60px;
+                    }
+                    a {
+                        font-size: 150%;
+                        color: #f4f4f4;
+                    }
+                }
+                p {
+                    justify-content: left;
+                }
+                a {
+                    color: rgba(0, 0, 0, 0.5);
+                }
+                .social {
+                    a {
+                        font-size: 250%;
+                        padding: 5px;
+                        margin: 0 5px;
+                        @include transition();
+                        &:hover {
+                            color: $green;
+                        }
+                    }
+                }
+            }
+            #todo {
+                text-align: center;
+                color: #f4f4f4;
+                margin-top: 5%;
+                h3 {
+                    font-family: $font_raleway_medium;
+                    font-size: 150%;
+                }
+                form {
+                    input {
+                        font-family: $font_asap_regular;
+                    }
+                }
+                #new_todo,
+                #edited_todo {
+                    width: 50%;
+                }
+            }
+            #profile {
+                text-align: center;
+                font-family: $font_asap_regular;
+                color: #f4f4f4;
+                img {
+                    width: 100px;
+                    @include border-radius(50%);
+                }
+                a {
+                    color: $green;
+                    margin: 5px 0;
+                }
+                form {
+                    margin: 10px 0;
+                    input {
+                        width: 30%;
+                    }
+                    .btn {
+                        width: auto;
+                    }
+                }
+            }
+            #todos {
+                font-family: $font_asap_regular;
+                overflow: auto;
+                #weekdays {
+                    float: left;
+                    text-align: center;
+                    position: fixed;
+                    width: 30%;
+                    @include height();
+                    background: $light_red;
+                    h3 {
+                        color: #f4f4f4;
+                        font-family: $font_raleway_medium;
+                        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+                        margin: 0;
+                        padding: 20px;
+                    }
+                    a {
+                        display: block;
+                        padding: 20px 0;
+                        color: $green;
+                        font-family: $font_asap_medium;
+                        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+                        @include transition();
+                        span {
+                            font-size: 80%;
+                            margin-left: 10px;
+                            font-family: $font_asap_regular;
+                        }
+                    }
+                    &:focus,
+                    .active_link {
+                        color: $light_blue;
+                    }
+                }
+                #todo_content {
+                    float: right;
+                    width: 70%;
+                    @include height();
+                    background: #f4f4f4;
+                    overflow: scroll;
+                    #add_todo_section {
+                        overflow: hidden;
+                        width: 100%;
+                        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+                        padding: 20px;
+                    }
+                    .add_todo {
+                        // display: inline-block;
+                        float: right;
+                        padding: 0;
+                        margin: 0;
+                        color: $light_red;
+                        font-size: 150%;
+                        text-align: right;
+                        clear: both;
+                        @include transition();
+                        &:hover {
+                            color: $dark_blue;
+                        }
+                    }
+                    .todo_content {
+                        display: none;
+                        border-top: 1px solid rgba(0, 0, 0, 0.1);
+                        padding: 5px 50px;
+                        @include transition();
+                        @include animation(fadeEffect, 1s);
+                        a {
+                            color: $dark_blue;
+                        }
+                        .single_todo {
+                            padding: 10px 0;
+                            clear: both;
+                            overflow: auto;
+                            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+                            .todo_info {
+                                float: left;
+                                max-width: 75%;
+                                p {
+                                    display: inline-block;
+                                    padding: 0 10px 5px 0;
+                                    font-size: 90%;
+                                    text-align: left;
+                                }
+                                .title {
+                                    display: block;
+                                    padding: 0;
+                                    margin: 0;
+                                    text-align: left;
+                                    font-family: $font_asap_medium;
+                                    font-size: 100%;
+                                }
+                                .priority {
+                                    color: $light_red;
+                                    i {
+                                        color: $dark_red;
+                                    }
+                                }
+                                .category {
+                                    color: $light_blue;
+                                    i {
+                                        color: $dark_blue;
+                                    }
+                                }
+                                .due_date {
+                                    color: $light_blue;
+                                    span {
+                                        color: $light_red;
+                                    }
+                                }
+                            }
+                            .todo_actions {
+                                float: right;
+                                width: 25%;
+                                font-size: 200%;
+                                a {
+                                    display: inline-block;
+                                    padding: 5px 10px;
+                                    @include border-radius(5px);
+                                    @include transition();
+                                }
+                                .completed {
+                                    color: $green;
+                                    border: 1px solid transparent;
+                                    &:hover {
+                                        border-color: $green;
+                                    }
+                                }
+                                .edit {
+                                    color: $dark_blue;
+                                    border: 1px solid transparent;
+                                    &:hover {
+                                        border-color: $dark_blue;
+                                    }
+                                }
+                                .delete_todo {
+                                    color: $light_red;
+                                    border: 1px solid transparent;
+                                    &:hover {
+                                        border-color: $light_red;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        } // Footer
+        footer {
+            background: rgba(0, 0, 0, 0.5);
+            position: absolute;
+            width: 100%;
+            bottom: 0;
+            text-align: center;
+            font-family: $font_asap_regular;
+            font-size: 80%;
+            a {
+                @include transition();
+                color: $green;
+                &:hover {
+                    color: rgba(255, 255, 255, 0.5);
+                }
+            }
+        }
+    } //////////////////// MEDIA QUERIES \\\\\\\\\\\\\\\\\\\\
+    @media screen and (max-width: 1160px) {
+        #background {
+            main {
+                #todos {
+                    #todo_content {
+                        .todo_content {
+                            .single_todo {
+                                .todo_actions {
+                                    a {
+                                        font-size: 80%;
+                                        padding: 5px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    @media screen and (max-width: 915px) {
+        #background {
+            main {
+                #todos {
+                    #weekdays {
+                        h3,
+                        a {
+                            font-size: 90%;
+                        }
+                        a {
+                            padding: 10px 0;
+                            span {
+                                display: block;
+                            }
+                        }
+                    }
+                    #todo_content {
+                        #add_todo_section {
+                            padding: 10px;
+                        }
+                        .todo_content {
+                            padding: 5px 10px;
+                            .single_todo {
+                                .todo_info,
+                                .todo_actions {
+                                    display: block;
+                                    float: none;
+                                }
+                                .todo_info {
+                                    max-width: 100%;
+                                    p {
+                                        font-size: 80%;
+                                    }
+                                    .title {
+                                        font-size: 90%;
+                                    }
+                                }
+                                .todo_actions {
+                                    width: auto;
+                                    a {
+                                        display: inline-block;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    @media screen and (max-width: 768px) {
+        #background {
+            nav {
+                .brand {
+                    #left-nav {
+                        display: none;
+                    }
+                }
+                #right_nav {
+                    padding: 0;
+                    a,
+                    img {
+                        display: none;
+                    }
+                    #open_nav_btn {
+                        margin: 5px;
+                        display: block;
+                    }
+                }
+            }
+        }
+    }
+    @media screen and (max-width: 600px) {
+        #background {
+            main {
+                #auth {
+                    #register {
+                        font-size: 80%;
+                    }
+                }
+                #about {
+                    font-size: 90%;
+                    .social {
+                        a {
+                            font-size: 150%;
+                            margin: 0;
+                        }
+                    }
+                }
+                #todo {
+                    font-size: 80%;
+                    input,
+                    select,
+                    #new_todo,
+                    #edited_todo {
+                        width: 75%;
+                    }
+                    .btn {
+                        width: auto;
+                    }
+                }
+                #profile {
+                    font-size: 90%;
+                    form {
+                        input {
+                            width: 75%;
+                        }
+                        .btn {
+                            font-size: 80% !important;
+                            padding: 5px 10px !important;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

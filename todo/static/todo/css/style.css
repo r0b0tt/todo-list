@@ -1,0 +1,469 @@
+@font-face {
+  font-family: Asap-Medium;
+  src: url(../fonts/Asap-Medium.TTF); }
+@font-face {
+  font-family: Asap-Regular;
+  src: url(../fonts/Asap-Regular.TTF); }
+@font-face {
+  font-family: Raleway-Medium;
+  src: url(../fonts/Raleway-Medium.TTF); }
+@keyframes fadeEffect {
+  from {
+    opacity: 0; }
+  to {
+    opacity: 1; } }
+* {
+  box-sizing: border-box; }
+
+a {
+  text-decoration: none; }
+
+.wrap {
+  width: 95%;
+  margin: 0 auto; }
+
+input,
+select {
+  padding: 10px 30px;
+  margin-bottom: 15px;
+  -webkit-border-radius: 50px;
+  -moz-border-radius: 50px;
+  -o-border-radius: 50px;
+  border-radius: 50px;
+  border: none;
+  text-align: center;
+  font-size: 100%; }
+
+label {
+  display: block;
+  font-family: Asap-Regular; }
+
+.btn {
+  padding: 10px 15px !important;
+  color: #f4f4f4;
+  cursor: pointer;
+  font-family: Asap-Medium;
+  font-size: 100% !important;
+  -webkit-border-radius: 10px !important;
+  -moz-border-radius: 10px !important;
+  -o-border-radius: 10px !important;
+  border-radius: 10px !important;
+  -webkit-transition: all 0.4s;
+  -moz-transition: all 0.4s;
+  -o-transition: all 0.4s;
+  transition: all 0.4s; }
+  .btn:hover {
+    background: #f4f4f4;
+    color: #2880F3; }
+
+.btn_success {
+  border: 2px solid #0DF97D;
+  background: #0DF97D; }
+
+.btn_danger {
+  border: 2px solid #CF6565;
+  background: #CF6565; }
+
+.btn_large {
+  padding: 15px 25px !important; }
+
+body {
+  margin: 0; }
+  body #sidenav {
+    background: #333333;
+    padding: 30px 0;
+    width: 0;
+    height: 100vh;
+    position: fixed;
+    font-family: Asap-Medium;
+    z-index: 1;
+    overflow-x: hidden;
+    -webkit-transition: all 0.4s;
+    -moz-transition: all 0.4s;
+    -o-transition: all 0.4s;
+    transition: all 0.4s; }
+    body #sidenav a {
+      display: block;
+      color: #f4f4f4;
+      padding: 15px 20px;
+      -webkit-transition: all 0.4s;
+      -moz-transition: all 0.4s;
+      -o-transition: all 0.4s;
+      transition: all 0.4s; }
+      body #sidenav a:hover {
+        background: #f4f4f4;
+        color: #2880F3; }
+    body #sidenav #close_button {
+      position: relative;
+      left: 65%;
+      font-size: 2em;
+      padding: 0;
+      color: red; }
+      body #sidenav #close_button:hover {
+        color: rgba(255, 255, 255, 0.5);
+        background: transparent;
+        cursor: pointer; }
+    body #sidenav .active {
+      color: #4ACADE; }
+  body #background {
+    background: #2880F3;
+    background: -webkit-linear-gradient(left, #2880F3, #4ACADE);
+    background: -moz-linear-gradient(right, #2880F3, #4ACADE);
+    background: -o-linear-gradient(right, #2880F3, #4ACADE);
+    background: linear-gradient(to right, #2880F3, #4ACADE);
+    height: 100vh; }
+    body #background nav {
+      font-family: Raleway-Medium;
+      padding: 10px;
+      height: 60px;
+      min-height: 60px;
+      height: 60px;
+      overflow: hidden; }
+      body #background nav a {
+        color: #f4f4f4;
+        -webkit-transition: all 0.4s;
+        -moz-transition: all 0.4s;
+        -o-transition: all 0.4s;
+        transition: all 0.4s; }
+        body #background nav a:hover {
+          color: rgba(0, 0, 0, 0.5); }
+      body #background nav .active {
+        color: rgba(0, 0, 0, 0.5); }
+      body #background nav .brand img {
+        width: 50px;
+        float: left; }
+      body #background nav .brand a {
+        float: left;
+        padding: 10px; }
+      body #background nav .brand #brand_title {
+        padding: 5px;
+        font-size: 150%; }
+      body #background nav #right_nav {
+        float: right;
+        padding: 5px; }
+        body #background nav #right_nav img {
+          width: 50px;
+          float: left;
+          position: relative;
+          bottom: 10px;
+          -webkit-border-radius: 50%;
+          -moz-border-radius: 50%;
+          -o-border-radius: 50%;
+          border-radius: 50%; }
+        body #background nav #right_nav a {
+          padding: 5px;
+          float: left; }
+        body #background nav #right_nav #open_nav_btn {
+          display: none;
+          cursor: pointer;
+          font-size: 150%;
+          padding: 0;
+          margin: .5em;
+          float: left; }
+    body #background main #jumbotron {
+      text-align: center;
+      font-family: Asap-Medium;
+      color: #f4f4f4;
+      margin: 12% 0 0 0; }
+      body #background main #jumbotron a {
+        display: inline-block;
+        margin: 5px 0; }
+    body #background main #auth {
+      text-align: center;
+      color: #f4f4f4;
+      font-family: Asap-Regular; }
+      body #background main #auth h3 {
+        font-family: Raleway-Medium;
+        font-size: 150%; }
+      body #background main #auth a {
+        color: #0DF97D;
+        -webkit-transition: all 0.4s;
+        -moz-transition: all 0.4s;
+        -o-transition: all 0.4s;
+        transition: all 0.4s; }
+        body #background main #auth a:hover {
+          color: rgba(0, 0, 0, 0.5); }
+      body #background main #auth #login {
+        margin-top: 10%; }
+      body #background main #auth #register {
+        margin-top: 5%; }
+    body #background main #about {
+      text-align: center;
+      margin-top: 5%;
+      font-family: Asap-Medium;
+      color: #f4f4f4; }
+      body #background main #about .branding {
+        font-family: Raleway-Medium; }
+        body #background main #about .branding img {
+          width: 60px; }
+        body #background main #about .branding a {
+          font-size: 150%;
+          color: #f4f4f4; }
+      body #background main #about p {
+        justify-content: left; }
+      body #background main #about a {
+        color: rgba(0, 0, 0, 0.5); }
+      body #background main #about .social a {
+        font-size: 250%;
+        padding: 5px;
+        margin: 0 5px;
+        -webkit-transition: all 0.4s;
+        -moz-transition: all 0.4s;
+        -o-transition: all 0.4s;
+        transition: all 0.4s; }
+        body #background main #about .social a:hover {
+          color: #0DF97D; }
+    body #background main #todo {
+      text-align: center;
+      color: #f4f4f4;
+      margin-top: 5%; }
+      body #background main #todo h3 {
+        font-family: Raleway-Medium;
+        font-size: 150%; }
+      body #background main #todo form input {
+        font-family: Asap-Regular; }
+      body #background main #todo #new_todo,
+      body #background main #todo #edited_todo {
+        width: 50%; }
+    body #background main #profile {
+      text-align: center;
+      font-family: Asap-Regular;
+      color: #f4f4f4; }
+      body #background main #profile img {
+        width: 100px;
+        -webkit-border-radius: 50%;
+        -moz-border-radius: 50%;
+        -o-border-radius: 50%;
+        border-radius: 50%; }
+      body #background main #profile a {
+        color: #0DF97D;
+        margin: 5px 0; }
+      body #background main #profile form {
+        margin: 10px 0; }
+        body #background main #profile form input {
+          width: 30%; }
+        body #background main #profile form .btn {
+          width: auto; }
+    body #background main #todos {
+      font-family: Asap-Regular;
+      overflow: auto; }
+      body #background main #todos #weekdays {
+        float: left;
+        text-align: center;
+        position: fixed;
+        width: 30%;
+        height: -webkit-calc(100vh - 60px);
+        height: -moz-calc(100vh - 60px);
+        height: -o-calc(100vh - 60px);
+        height: calc(100vh - 60px);
+        background: #CF6565; }
+        body #background main #todos #weekdays h3 {
+          color: #f4f4f4;
+          font-family: Raleway-Medium;
+          border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+          margin: 0;
+          padding: 20px; }
+        body #background main #todos #weekdays a {
+          display: block;
+          padding: 20px 0;
+          color: #0DF97D;
+          font-family: Asap-Medium;
+          border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+          -webkit-transition: all 0.4s;
+          -moz-transition: all 0.4s;
+          -o-transition: all 0.4s;
+          transition: all 0.4s; }
+          body #background main #todos #weekdays a span {
+            font-size: 80%;
+            margin-left: 10px;
+            font-family: Asap-Regular; }
+        body #background main #todos #weekdays:focus,
+        body #background main #todos #weekdays .active_link {
+          color: #4ACADE; }
+      body #background main #todos #todo_content {
+        float: right;
+        width: 70%;
+        height: -webkit-calc(100vh - 60px);
+        height: -moz-calc(100vh - 60px);
+        height: -o-calc(100vh - 60px);
+        height: calc(100vh - 60px);
+        background: #f4f4f4;
+        overflow: scroll; }
+        body #background main #todos #todo_content #add_todo_section {
+          overflow: hidden;
+          width: 100%;
+          border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+          padding: 20px; }
+        body #background main #todos #todo_content .add_todo {
+          float: right;
+          padding: 0;
+          margin: 0;
+          color: #CF6565;
+          font-size: 150%;
+          text-align: right;
+          clear: both;
+          -webkit-transition: all 0.4s;
+          -moz-transition: all 0.4s;
+          -o-transition: all 0.4s;
+          transition: all 0.4s; }
+          body #background main #todos #todo_content .add_todo:hover {
+            color: #2880F3; }
+        body #background main #todos #todo_content .todo_content {
+          display: none;
+          border-top: 1px solid rgba(0, 0, 0, 0.1);
+          padding: 5px 50px;
+          -webkit-transition: all 0.4s;
+          -moz-transition: all 0.4s;
+          -o-transition: all 0.4s;
+          transition: all 0.4s;
+          -webkit-animation: fadeEffect 1s;
+          -moz-animation: fadeEffect 1s;
+          -o-animation: fadeEffect 1s;
+          animation: fadeEffect 1s; }
+          body #background main #todos #todo_content .todo_content a {
+            color: #2880F3; }
+          body #background main #todos #todo_content .todo_content .single_todo {
+            padding: 10px 0;
+            clear: both;
+            overflow: auto;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1); }
+            body #background main #todos #todo_content .todo_content .single_todo .todo_info {
+              float: left;
+              max-width: 75%; }
+              body #background main #todos #todo_content .todo_content .single_todo .todo_info p {
+                display: inline-block;
+                padding: 0 10px 5px 0;
+                font-size: 90%;
+                text-align: left; }
+              body #background main #todos #todo_content .todo_content .single_todo .todo_info .title {
+                display: block;
+                padding: 0;
+                margin: 0;
+                text-align: left;
+                font-family: Asap-Medium;
+                font-size: 100%; }
+              body #background main #todos #todo_content .todo_content .single_todo .todo_info .priority {
+                color: #CF6565; }
+                body #background main #todos #todo_content .todo_content .single_todo .todo_info .priority i {
+                  color: #DD3E3E; }
+              body #background main #todos #todo_content .todo_content .single_todo .todo_info .category {
+                color: #4ACADE; }
+                body #background main #todos #todo_content .todo_content .single_todo .todo_info .category i {
+                  color: #2880F3; }
+              body #background main #todos #todo_content .todo_content .single_todo .todo_info .due_date {
+                color: #4ACADE; }
+                body #background main #todos #todo_content .todo_content .single_todo .todo_info .due_date span {
+                  color: #CF6565; }
+            body #background main #todos #todo_content .todo_content .single_todo .todo_actions {
+              float: right;
+              width: 25%;
+              font-size: 200%; }
+              body #background main #todos #todo_content .todo_content .single_todo .todo_actions a {
+                display: inline-block;
+                padding: 5px 10px;
+                -webkit-border-radius: 5px;
+                -moz-border-radius: 5px;
+                -o-border-radius: 5px;
+                border-radius: 5px;
+                -webkit-transition: all 0.4s;
+                -moz-transition: all 0.4s;
+                -o-transition: all 0.4s;
+                transition: all 0.4s; }
+              body #background main #todos #todo_content .todo_content .single_todo .todo_actions .completed {
+                color: #0DF97D;
+                border: 1px solid transparent; }
+                body #background main #todos #todo_content .todo_content .single_todo .todo_actions .completed:hover {
+                  border-color: #0DF97D; }
+              body #background main #todos #todo_content .todo_content .single_todo .todo_actions .edit {
+                color: #2880F3;
+                border: 1px solid transparent; }
+                body #background main #todos #todo_content .todo_content .single_todo .todo_actions .edit:hover {
+                  border-color: #2880F3; }
+              body #background main #todos #todo_content .todo_content .single_todo .todo_actions .delete_todo {
+                color: #CF6565;
+                border: 1px solid transparent; }
+                body #background main #todos #todo_content .todo_content .single_todo .todo_actions .delete_todo:hover {
+                  border-color: #CF6565; }
+    body #background footer {
+      background: rgba(0, 0, 0, 0.5);
+      position: absolute;
+      width: 100%;
+      bottom: 0;
+      text-align: center;
+      font-family: Asap-Regular;
+      font-size: 80%; }
+      body #background footer a {
+        -webkit-transition: all 0.4s;
+        -moz-transition: all 0.4s;
+        -o-transition: all 0.4s;
+        transition: all 0.4s;
+        color: #0DF97D; }
+        body #background footer a:hover {
+          color: rgba(255, 255, 255, 0.5); }
+  @media screen and (max-width: 1160px) {
+    body #background main #todos #todo_content .todo_content .single_todo .todo_actions a {
+      font-size: 80%;
+      padding: 5px; } }
+  @media screen and (max-width: 915px) {
+    body #background main #todos #weekdays h3,
+    body #background main #todos #weekdays a {
+      font-size: 90%; }
+    body #background main #todos #weekdays a {
+      padding: 10px 0; }
+      body #background main #todos #weekdays a span {
+        display: block; }
+    body #background main #todos #todo_content #add_todo_section {
+      padding: 10px; }
+    body #background main #todos #todo_content .todo_content {
+      padding: 5px 10px; }
+      body #background main #todos #todo_content .todo_content .single_todo .todo_info,
+      body #background main #todos #todo_content .todo_content .single_todo .todo_actions {
+        display: block;
+        float: none; }
+      body #background main #todos #todo_content .todo_content .single_todo .todo_info {
+        max-width: 100%; }
+        body #background main #todos #todo_content .todo_content .single_todo .todo_info p {
+          font-size: 80%; }
+        body #background main #todos #todo_content .todo_content .single_todo .todo_info .title {
+          font-size: 90%; }
+      body #background main #todos #todo_content .todo_content .single_todo .todo_actions {
+        width: auto; }
+        body #background main #todos #todo_content .todo_content .single_todo .todo_actions a {
+          display: inline-block; } }
+  @media screen and (max-width: 768px) {
+    body #background nav .brand #left-nav {
+      display: none; }
+    body #background nav #right_nav {
+      padding: 0; }
+      body #background nav #right_nav a,
+      body #background nav #right_nav img {
+        display: none; }
+      body #background nav #right_nav #open_nav_btn {
+        margin: 5px;
+        display: block; } }
+  @media screen and (max-width: 600px) {
+    body #background main #auth #register {
+      font-size: 80%; }
+    body #background main #about {
+      font-size: 90%; }
+      body #background main #about .social a {
+        font-size: 150%;
+        margin: 0; }
+    body #background main #todo {
+      font-size: 80%; }
+      body #background main #todo input,
+      body #background main #todo select,
+      body #background main #todo #new_todo,
+      body #background main #todo #edited_todo {
+        width: 75%; }
+      body #background main #todo .btn {
+        width: auto; }
+    body #background main #profile {
+      font-size: 90%; }
+      body #background main #profile form input {
+        width: 75%; }
+      body #background main #profile form .btn {
+        font-size: 80% !important;
+        padding: 5px 10px !important; } }
+
+/*# sourceMappingURL=style.css.map */
