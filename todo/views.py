@@ -3,24 +3,15 @@ from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.views import View
 from django.views.generic.edit import CreateView, UpdateView
 from django.urls import reverse_lazy, reverse
-from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User
 
 from datetime import date, timedelta
 
 from .models import Todo
-from .forms import TodoForm, UserForm
+from .forms import TodoForm
 
-class LandingPage(View):
-    """
-    Landing Page for the application.
-    """
-    template_name = 'todo/landing.html'
 
-    def get(self, request):
-        return render(request, self.template_name)
-
-class IndexView(LoginRequiredMixin, View):
+class IndexView(View):
     """
     Index Page for the ToDo Web Application.
     """
@@ -31,8 +22,8 @@ class IndexView(LoginRequiredMixin, View):
         passed_todos = Todo.objects.filter(due_date__lt=date.today())
         delete_previous_todos(passed_todos)
 
-        # Get all Todos that belong to the logged in user.
-        todos = Todo.objects.filter(owner=request.user).order_by('due_date')
+        # Get all Todos
+        todos = Todo.objects.all().order_by('due_date')
 
         # Determine the dates for the next 7 days.
         todays_date = date.today()
@@ -68,8 +59,7 @@ class IndexView(LoginRequiredMixin, View):
             elif todo.due_date == day7_date:
                 day7_todos.append(todo)
 
-
-        context ={
+        context = {
             'todos': todos,
             'todays_todos': todays_todos,
             'todays_date': todays_date,
@@ -85,9 +75,9 @@ class IndexView(LoginRequiredMixin, View):
             'day6_date': day6_date,
             'day7_todos': day7_todos,
             'day7_date': day7_date,
-            }
+        }
         return render(request, self.template_name, context)
-    
+
 
 class AboutView(View):
     """
@@ -98,7 +88,8 @@ class AboutView(View):
     def get(self, request):
         return render(request, self.template_name)
 
-class AddTodo(LoginRequiredMixin, CreateView):
+
+class AddTodo(CreateView):
     """
     Add a new todo.
     """
@@ -107,7 +98,8 @@ class AddTodo(LoginRequiredMixin, CreateView):
     form_class = TodoForm
     success_url = '/'
 
-class EditTodo(LoginRequiredMixin, UpdateView):
+
+class EditTodo(UpdateView):
     """
     Edit a todo.
     """
@@ -116,7 +108,8 @@ class EditTodo(LoginRequiredMixin, UpdateView):
     form_class = TodoForm
     success_url = '/'
 
-class DeleteTodo(LoginRequiredMixin, View):
+
+class DeleteTodo(View):
     """
     Delete a todo.
     """
@@ -125,23 +118,6 @@ class DeleteTodo(LoginRequiredMixin, View):
         Todo.objects.get(pk=pk).delete()
         return HttpResponseRedirect(reverse('todo:index'))
 
-class ProfileView(LoginRequiredMixin, View):
-    """
-    Profile page for the logged in user.
-    """
-    template_name = 'todo/profile.html'
-
-    def get(self, request):
-        return render(request, self.template_name)
-
-class CreateUser(CreateView):
-    """
-    Create a new user.
-    """
-    model = User
-    template_name = 'todo/register.html'
-    form_class = UserForm
-    success_url = '/'
 
 def delete_previous_todos(todos_list):
     """
@@ -149,4 +125,3 @@ def delete_previous_todos(todos_list):
     """
     for todo in todos_list:
         todo.delete()
-

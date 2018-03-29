@@ -5,3 +5,4 @@ db.sqlite3
 /todo/__pycache__/
 /todo/static/todo/.sass-cache/
 /todo/static/todo/css/style.css.map
+.pyc
